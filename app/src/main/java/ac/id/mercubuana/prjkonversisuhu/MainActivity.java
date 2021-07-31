@@ -30,35 +30,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnKonfersi_Click(View v) {
-        double dCelcius, dFahrenheit, dReamur, dKelvin;
+        Suhu objSuhu = new Suhu();
+        objSuhu.Celcius = Double.parseDouble(suhuCelcius.getText().toString());
+        objSuhu.Fahrenheit = objSuhu.konversiCelciustoFahrenheit(objSuhu.Celcius);
+        objSuhu.Reamur = objSuhu.konversiCelciustoReamur(objSuhu.Celcius);
+        objSuhu.Kelvin = objSuhu.konversiCelciustoKelvin(objSuhu.Celcius);
 
-        dCelcius = Double.parseDouble(suhuCelcius.getText().toString());
-        dFahrenheit = hitungKonfersiSuhu(dCelcius);
-        dReamur = hitungKonfersiReamur(dCelcius);
-        dKelvin = hitungKonfersiKelvin(dCelcius);
-
-        suhuFahrenheit.setText(String.valueOf(dFahrenheit));
-        suhuReamur.setText(String.valueOf(dReamur));
-        suhuKelvin.setText(String.valueOf(dKelvin));
+        suhuFahrenheit.setText(String.valueOf(objSuhu.Fahrenheit));
+        suhuReamur.setText(String.valueOf(objSuhu.Reamur));
+        suhuKelvin.setText(String.valueOf(objSuhu.Kelvin));
     }
 
-    private double hitungKonfersiSuhu(double dCelcius) {
-        double dSuhu = 0;
-        dSuhu = (1.8 * dCelcius) + 32;
-
-        return dSuhu;
-    }
-
-    private double hitungKonfersiReamur(double dCelcius) {
-        double dSuhu = 0;
-        dSuhu = 0.8*dCelcius;
-        return dSuhu;
-    }
-
-    private double hitungKonfersiKelvin(double dCelcius) {
-        double dSuhu = 0;
-        dSuhu = dCelcius + 273;
-        return dSuhu;
-    }
 
 }
